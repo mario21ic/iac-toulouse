@@ -7,7 +7,7 @@ resource "aws_instance" "myec2" {
   instance_type           = "t2.nano"
   key_name                = "workshop_tls"
 
-  security_groups = "${aws_security_group.sg_ec2.id}"
+  security_groups = ["${aws_security_group.sg_ec2.id}"]
 
   root_block_device {
     volume_size           = "20"
