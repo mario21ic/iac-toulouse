@@ -3,7 +3,7 @@ provider "aws" {
 }
  
 resource "aws_instance" "myec2" {
-  ami                     = "ami-0cf31d971a3ca20d6"
+  ami                     = "ami-0b59bfac6be064b78"
   instance_type           = "t2.nano"
   key_name                = "workshop_tls"
 
