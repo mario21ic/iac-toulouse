@@ -16,7 +16,7 @@ resource "aws_elb" "my_elb" {
   name            = "elb-demo"
 
   subnets         = ["subnet-921fe4e9", "subnet-da0f1090"]
-  security_groups = ["${aws_security_group.sg_elb.id}"]
+  #security_groups = ["${aws_security_group.sg_elb.id}"]
 
 
   listener {
