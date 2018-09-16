@@ -13,10 +13,10 @@ module "aws_instance" {
 }
 
 resource "aws_elb" "my_elb" {
-  name            = "elb-demo"
+  name            = "elb_demo"
 
   subnets         = ["subnet-921fe4e9", "subnet-da0f1090"]
-  #security_groups = ["${aws_security_group.sg_elb.id}"]
+  security_groups = ["${aws_security_group.sg_elb.id}"]
 
 
   listener {
@@ -42,7 +42,7 @@ resource "aws_elb" "my_elb" {
 }
 
 resource "aws_security_group" "sg_elb" {
-  name        = "sg-elb"
+  name        = "sg_elb"
   description = "ELB inbound and outbound"
   #vpc_id     = "${var.vpc_id}"
 
