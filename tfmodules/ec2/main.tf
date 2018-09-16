@@ -18,7 +18,7 @@ resource "aws_instance" "myec2" {
 }
 
 resource "aws_security_group" "sg_ec2" {
-  name        = "sg_ec2"
+  name        = "sg_ec2_${var.env}"
   description = "ec2 inbound and outbound"
   #vpc_id      = "vpc-84c166ed"
 
