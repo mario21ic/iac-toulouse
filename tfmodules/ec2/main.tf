@@ -17,6 +17,7 @@ data "aws_ami" "nginx" {
 }
  
 resource "aws_instance" "myec2" {
+  count                 = "${var.count}"
   ami                     = "${data.aws_ami.nginx.id}"
   instance_type           = "t2.nano"
   key_name                = "${var.key}"
@@ -30,7 +31,7 @@ resource "aws_instance" "myec2" {
     delete_on_termination = "true"
   }
   tags {
-    Name        = "${var.env}-ec2"
+    Name        = "${var.env}-ec2-${count.index}"
   }
 }
 
