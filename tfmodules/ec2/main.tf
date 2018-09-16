@@ -1,9 +1,23 @@
 provider "aws" {
   region = "${var.region}"
 }
+
+data "aws_ami" "nginx" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["${var.ami}"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
  
 resource "aws_instance" "myec2" {
-  ami                     = "${var.ami}"
+  ami                     = "${data.aws_ami.nginx.id}"
   instance_type           = "t2.nano"
   key_name                = "${var.key}"
 
