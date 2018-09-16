@@ -15,10 +15,13 @@ resource "aws_instance" "myec2" {
     volume_type           = "gp2"
     delete_on_termination = "true"
   }
+  tags {
+    Name        = "${var.env}-ec2"
+  }
 }
 
 resource "aws_security_group" "sg_ec2" {
-  name        = "sg_ec2_${var.env}"
+  name        = "${var.env}_sg_ec2"
   description = "ec2 inbound and outbound"
   #vpc_id      = "vpc-84c166ed"
 
